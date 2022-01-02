@@ -31,6 +31,24 @@ export type RootTabParamList = {
   Status: undefined
 };
 
+export type User = {
+  id: string;
+  name: string;
+  imageUri: string;
+}
+
+export type Message = {
+  id: string;
+  content: string;
+  createdAt: number
+}
+
+export type ChatRoom = {
+  id: string;
+  users: [User];
+  lastMessage: Message;
+}
+
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> = CompositeScreenProps<
   BottomTabScreenProps<RootTabParamList, Screen>,
   NativeStackScreenProps<RootStackParamList>

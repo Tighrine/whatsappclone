@@ -1,11 +1,10 @@
 import React from "react";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { RootTabParamList } from "../types";
-import I18n from '../i18n';
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import TabOneScreen from "../screens/TabOneScreen";
-import TabTwoScreen from "../screens/TabTwoScreen";
+import ChatScreen from "../screens/ChatScreen";
 import { Fontisto } from "@expo/vector-icons";
 
 const MainTab = createMaterialTopTabNavigator<RootTabParamList>();
@@ -40,15 +39,15 @@ export default function MainTabNavigator() {
             />
             <MainTab.Screen
                 name='Chats'
-                component={TabTwoScreen}
+                component={ChatScreen}
             />
             <MainTab.Screen
                 name='Status'
-                component={TabTwoScreen}
+                component={ChatScreen}
             />
             <MainTab.Screen
                 name='Calls'
-                component={TabTwoScreen}
+                component={ChatScreen}
             />
         </MainTab.Navigator>
     );
