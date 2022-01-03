@@ -15,10 +15,13 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^12.0.5",
+    "@react-native-community/netinfo": "^7.1.7",
     "@react-navigation/bottom-tabs": "^6.0.5",
     "@react-navigation/material-top-tabs": "^6.0.6",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.1.0",
+    "aws-amplify": "^4.3.11",
+    "aws-amplify-react-native": "^6.0.2",
     "ex-react-native-i18n": "^0.0.6",
     "expo": "~44.0.0",
     "expo-asset": "~8.4.4",

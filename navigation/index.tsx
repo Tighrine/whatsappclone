@@ -7,13 +7,13 @@ import { Octicons, MaterialCommunityIcons, MaterialIcons, FontAwesome5 } from '@
 import { NavigationContainer, DefaultTheme, DarkTheme, RouteProp } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import { ColorSchemeName, TouchableWithoutFeedback, Image } from 'react-native';
+import { ColorSchemeName, TouchableWithoutFeedback, Image, View, Text } from 'react-native';
 import styles from '../components/ChatListItem/style';
-import { View, Text } from '../components/Themed';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import ChatRoomScreen from '../screens/ChatRoomScreen';
+import ContactScreen from '../screens/ContatctScreen';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import { RootStackParamList } from '../types';
@@ -75,11 +75,12 @@ function RootNavigator() {
         name="ChatRoom"
         component={ChatRoomScreen}
         options={({ route }) => ({
-          title: route?.params?.name,
+          title: route?.params?.otherUser?.name,
           headerRight,
         })}
       />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+      <Stack.Screen name="Contacts" component={ContactScreen} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group>
@@ -116,19 +117,16 @@ const headerRight = () => {
   )
 }
 
-const headerLeft = (route: { params: { name: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; }; }) => {
+const headerTitleCustome = ( route: RouteProp<RootStackParamList, "ChatRoom"> ) => {
   return (
     <TouchableWithoutFeedback>
       <View style={styles.container}>
         <View style={styles.lefContainer}>
           <Image
             source={{
-              uri: otherUser?.imageUri,
+              uri: route?.params?.otherUser?.imageUri,
             }} style={styles.avatar} />
-          <View style={styles.midContainer}>
-            <Text style={styles.username}>{route.params.name}</Text>
-            <Text style={styles.lastMessage}>{chatRoom.lastMessage.content}</Text>
-          </View>
+          <Text>{route?.params?.name}</Text>
         </View>
       </View>
     </TouchableWithoutFeedback>

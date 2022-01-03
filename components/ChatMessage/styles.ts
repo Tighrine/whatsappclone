@@ -8,6 +8,11 @@ const styles = StyleSheet.create({
   messageBox: {
     borderRadius: 20,
     padding: 10,
+    shadowColor: "#000",
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+
+    elevation: 3,
   },
   name: {
     color: Colors.light.tint,
