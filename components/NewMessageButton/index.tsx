@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouchableOpacity, View} from "react-native";
+import {TouchableOpacity, SafeAreaView} from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import styles from "./style";
 import { useNavigation } from '@react-navigation/native';
@@ -13,7 +13,7 @@ const NewMessageButton = () => {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <TouchableOpacity onPress={onPress}>
         <MaterialCommunityIcons
           name="message-reply-text"
@@ -21,7 +21,7 @@ const NewMessageButton = () => {
           color="white"
         />
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   )
 }
 

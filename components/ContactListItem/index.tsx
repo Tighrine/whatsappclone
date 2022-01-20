@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  View,
+  SafeAreaView,
   Text,
   Image,
   TouchableWithoutFeedback
@@ -21,16 +21,16 @@ const ContactListItem = (props: ContactListItemProps) => {
 
   return (
     <TouchableWithoutFeedback onPress={onClick}>
-      <View style={styles.container}>
-        <View style={styles.lefContainer}>
+      <SafeAreaView style={styles.container}>
+        <SafeAreaView style={styles.lefContainer}>
           <Image source={{ uri: user.imageUri }} style={styles.avatar}/>
 
-          <View style={styles.midContainer}>
+          <SafeAreaView style={styles.midContainer}>
             <Text style={styles.username}>{user.name}</Text>
             <Text numberOfLines={2} style={styles.status}>{user.status}</Text>
-          </View>
-        </View>
-      </View>
+          </SafeAreaView>
+        </SafeAreaView>
+      </SafeAreaView>
     </TouchableWithoutFeedback>
   )
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, TouchableWithoutFeedback } from "react-native";
 import styles from "./style";
 import { ChatRoom, User } from '../../types';
-import { View, Text } from '../Themed';
+import { SafeAreaView, Text } from '../Themed';
 import moment from 'moment';
 import { useNavigation } from "@react-navigation/native";
 
@@ -21,22 +21,22 @@ const ChatListItem = (props: ChatListItemProps) => {
 
     return (
         <TouchableWithoutFeedback onPress={onClick}>
-            <View style={styles.container}>
-                <View style={styles.lefContainer}>
+            <SafeAreaView style={styles.container}>
+                <SafeAreaView style={styles.lefContainer}>
                     <Image
                         source={{
                             uri: otherUser?.imageUri,
                         }} style={styles.avatar} />
-                    <View style={styles.midContainer}>
+                    <SafeAreaView style={styles.midContainer}>
                         <Text style={styles.username}>{otherUser?.name}</Text>
                         <Text style={styles.lastMessage}>{chatRoom.lastMessage.content}</Text>
-                    </View>
-                </View>
+                    </SafeAreaView>
+                </SafeAreaView>
 
-                <View style={styles.timeVIew}>
+                <SafeAreaView style={styles.timeSafeAreaView}>
                     <Text style={styles.time}>{moment(chatRoom.lastMessage.createdAt).format("DD/MM/YYYY")}</Text>
-                </View>
-            </View>
+                </SafeAreaView>
+            </SafeAreaView>
         </TouchableWithoutFeedback>
     )
 

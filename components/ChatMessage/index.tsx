@@ -1,13 +1,10 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Text, SafeAreaView} from 'react-native';
 import { Message } from "../../types";
 import moment from "moment";
 import styles from './styles';
 
-export type ChatMessageProps = {
-  message: Message;
-  myId: String,
-}
+
 
 const ChatMessage = (props: ChatMessageProps) => {
   const { message, myId } = props;
@@ -17,8 +14,8 @@ const ChatMessage = (props: ChatMessageProps) => {
   }
 
   return (
-    <View style={styles.container}>
-      <View style={[
+    <SafeAreaView style={styles.container}>
+      <SafeAreaView style={[
         styles.messageBox, {
           backgroundColor: isMyMessage() ? '#DCF8C5' : 'white',
           marginLeft: isMyMessage() ? 50 : 0,
@@ -30,8 +27,8 @@ const ChatMessage = (props: ChatMessageProps) => {
         {!isMyMessage() && <Text style={styles.name}>{message?.user?.name}</Text>}
         <Text style={styles.message}>{message.content}</Text>
         <Text style={styles.time}>{moment(message.createdAt).fromNow()}</Text>
-      </View>
-    </View>
+      </SafeAreaView>
+    </SafeAreaView>
   )
 }
 

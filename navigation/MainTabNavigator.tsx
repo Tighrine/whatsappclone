@@ -6,11 +6,15 @@ import useColorScheme from "../hooks/useColorScheme";
 import TabOneScreen from "../screens/TabOneScreen";
 import ChatScreen from "../screens/ChatScreen";
 import { Fontisto } from "@expo/vector-icons";
+import CameraScreen from "../screens/CameraScreen2";
+import { SafeAreaView } from "react-native";
 
 const MainTab = createMaterialTopTabNavigator<RootTabParamList>();
 
 export default function MainTabNavigator() {
     const colorScheme = useColorScheme();
+
+    const EmptyComponent = () => null;
 
     return (
         <MainTab.Navigator
@@ -33,9 +37,18 @@ export default function MainTabNavigator() {
                 name='Camera'
                 options={{
                     tabBarShowLabel: false,
-                    tabBarIcon: ({color}) => (<Fontisto name="camera" color={color} size={20} />)
+                    tabBarIcon: ({color}) => (<Fontisto name="camera" color={color} size={20} />),
                 }}
-                component={TabOneScreen}
+                component={EmptyComponent}
+                listeners={({ navigation, route }) => ({
+                    tabPress: (e) => {
+                      // Prevent default action
+                      e.preventDefault();
+                
+                      // Do something with the `navigation` object
+                      navigation.navigate('CameraRoute');
+                    },
+                  })}
             />
             <MainTab.Screen
                 name='Chats'

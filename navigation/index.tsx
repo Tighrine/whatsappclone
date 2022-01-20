@@ -7,15 +7,16 @@ import { Octicons, MaterialCommunityIcons, MaterialIcons, FontAwesome5 } from '@
 import { NavigationContainer, DefaultTheme, DarkTheme, RouteProp } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import { ColorSchemeName, TouchableWithoutFeedback, Image, View, Text } from 'react-native';
+import { ColorSchemeName, TouchableWithoutFeedback, Image, SafeAreaView, Text } from 'react-native';
 import styles from '../components/ChatListItem/style';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
+import CameraScreen from '../screens/Camera/CameraScreen';
 import ChatRoomScreen from '../screens/ChatRoomScreen';
 import ContactScreen from '../screens/ContatctScreen';
-import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
+import CameraPreview from '../screens/Preview/Preview';
 import { RootStackParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import MainTabNavigator from './MainTabNavigator';
@@ -58,7 +59,7 @@ function RootNavigator() {
         options={{
           title: 'WhatsApp',
           headerRight: () => (
-            <View style={{
+            <SafeAreaView style={{
               flexDirection: 'row',
               width: 60,
               justifyContent: 'space-between',
@@ -67,7 +68,7 @@ function RootNavigator() {
             }}>
               <Octicons name='search' size={24} style={{ backgroundColor: Colors[colorScheme].tint, color: 'white' }} />
               <MaterialCommunityIcons name='dots-vertical' size={24} style={{ backgroundColor: Colors[colorScheme].tint, color: 'white' }} />
-            </View>
+            </SafeAreaView>
           )
         }}
       />
@@ -82,7 +83,8 @@ function RootNavigator() {
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Screen name="Contacts" component={ContactScreen} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
-        <Stack.Screen name="Modal" component={ModalScreen} />
+        <Stack.Screen options={{ headerShown:false }} name="CameraRoute" component={CameraScreen} />
+        <Stack.Screen options={{ headerShown:false }} name="Preview" component={CameraPreview} />
       </Stack.Group>
     </Stack.Navigator>
   );
@@ -91,7 +93,7 @@ function RootNavigator() {
 const headerRight = () => {
   const colorScheme = useColorScheme();
   return (
-    <View style={{
+    <SafeAreaView style={{
       flexDirection: 'row',
       width: 100,
       justifyContent: 'space-between',
@@ -113,22 +115,22 @@ const headerRight = () => {
         fontSize: 20,
         backgroundColor: Colors[colorScheme].tint
       }} />
-    </View>
+    </SafeAreaView>
   )
 }
 
 const headerTitleCustome = ( route: RouteProp<RootStackParamList, "ChatRoom"> ) => {
   return (
     <TouchableWithoutFeedback>
-      <View style={styles.container}>
-        <View style={styles.lefContainer}>
+      <SafeAreaView style={styles.container}>
+        <SafeAreaView style={styles.lefContainer}>
           <Image
             source={{
               uri: route?.params?.otherUser?.imageUri,
             }} style={styles.avatar} />
           <Text>{route?.params?.name}</Text>
-        </View>
-      </View>
+        </SafeAreaView>
+      </SafeAreaView>
     </TouchableWithoutFeedback>
   )
 }

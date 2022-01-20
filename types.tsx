@@ -18,7 +18,9 @@ export type RootStackParamList = {
   Modal: undefined;
   NotFound: undefined;
   ChatRoom: undefined;
-  Contacts: undefined
+  Contacts: undefined;
+  CameraRoute: undefined;
+  Preview: undefined
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
@@ -51,6 +53,11 @@ export type ChatRoom = {
   id: string;
   users: User[];
   lastMessage: Message;
+}
+
+export type ChatMessageProps = {
+  message: Message;
+  myId: String,
 }
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> = CompositeScreenProps<

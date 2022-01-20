@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: 'grey'
   },
-  timeVIew: {
+  timeSafeAreaView: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
     marginLeft: 'auto'

@@ -1,4 +1,4 @@
-export default {
+const data: any =  {
 	id: '1',
 	users: [{
 		id: 'u1',
@@ -67,3 +67,5 @@ export default {
 		},
 	}]
 }
+
+export default data;
